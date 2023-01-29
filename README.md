@@ -18,9 +18,9 @@ Pada kasus ini, aplikasi *machine learning* secara spesifik akan memprediksi har
     - untuk menyelesaikan permasalahan tersebut, maka akan dibuat aplikasi yang dapat memprediksi harga ideal untuk tiket pesawat penerbangan (dalam kasus ini, prediksi spesifik hanya akan menampilkan harga ideal pesawat maskapai penerbangan di India).
     - aplikasi ini akan memanfaatkan teknologi machine learning serta bahasa pemrograman Python dalam membuat prediksi harga ideal untuk menjadi bahan keputusan bagi maskapai penerbangan dalam menentukan harga tiket pesawat.
 - Hasil riset terkait:
-    [Predicting Flight Prices in India](https://www.researchgate.net/profile/Tarun-Devireddy/publication/337821411_Predicting_Flight_Prices_in_India/links/5debfba992851c83646b669a/Predicting-Flight-Prices-in-India.pdf)
-    [Understanding Customer Perception While Booking Flight Tickets](http://www.solidstatetechnology.us/index.php/JSST/article/view/5721)
-    [Airline Fare Prediction Using Machine Learning Algorithms](https://ieeexplore.ieee.org/abstract/document/9716563)
+   - [Predicting Flight Prices in India](https://www.researchgate.net/profile/Tarun-Devireddy/publication/337821411_Predicting_Flight_Prices_in_India/links/5debfba992851c83646b669a/Predicting-Flight-Prices-in-India.pdf)
+   - [Understanding Customer Perception While Booking Flight Tickets](http://www.solidstatetechnology.us/index.php/JSST/article/view/5721)
+   - [Airline Fare Prediction Using Machine Learning Algorithms](https://ieeexplore.ieee.org/abstract/document/9716563)
 
 ## Business Understanding
 Maskapai penerbangan x merupakan salah satu perusahaan maskapai yang menyediakan moda transportasi pesawat udara di Negara India. Untuk memaksimalkan keuntungan perusahaan, maka perusahaan harus mengetahui harga tiket ideal untuk diterapkan pada layanan jasa penerbangannya.
@@ -66,7 +66,7 @@ Data yang digunakan adalah dataset yang bersumber dari situs Kaggle yang berisi 
 - days_left = Jarak hari pemesanan tiket dengan hari penerbangan.
 - price = harga tiket.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
+**Langkah-Langkah Dalam Data Understanding**:
 - Untuk memahami dataset, langkah-langkah yang dilakukan, yaitu sebagai berikut:
     - Melakukan load dataset kedalam google colaboratory.
     - Melakukan Exploratory data analysis untuk memahami makna-makna variabel yang terdapat dalam dataset.
@@ -74,7 +74,7 @@ Data yang digunakan adalah dataset yang bersumber dari situs Kaggle yang berisi 
     - Memvisualisasikan data dengan menggunakan boxplot untuk mencari outlier.
     - Menggunakan IQR (Interquartile Range) untuk mengeliminasi outlier.
     - Melakukan univariative analysis untuk memahami sebaran data variabel.
-    - Melakukan multivariative analysis untuk memahami korelasi variabel kategorikal dan numberikak terhadap variabel price. 
+    - Melakukan multivariative analysis untuk memahami korelasi variabel kategorikal dan numberikak terhadap variabel price.
 
 ## *Data Preparation*
 Teknik *data preparation* yang dilakukan, yaitu sebagai berikut:
@@ -88,8 +88,111 @@ Teknik *data preparation* yang dilakukan, yaitu sebagai berikut:
 8. Membuat *correlation matrix* untuk fitur numerik.
 9. Mengeliminasi variabel numerik yang memiliki korelasi rendah terhadap variabel *price*.
 
+**Hasil Exploratory Data Analysis**
+
+![image](https://user-images.githubusercontent.com/122204998/215275455-f83febae-e954-485f-bd9b-afd26be84f18.png)
+
+Gambar 1: visualisasi variabel duration dengan menggunakan boxplot
+
+Berdasarkan hasil visualisasi, terlihat terdapat outliers dalam variabel duration. Alasannya, karena terdapat data yang terdapat melebihi Quartil 3.
+
+![image](https://user-images.githubusercontent.com/122204998/215275641-df70eac8-b271-4935-b5ee-b4c28e2f21aa.png)
+
+Gambar 2: visualisasi variabel days_left dengan menggunakan boxplot
+
+Berdasarkan hasil visualisasi, tidak terdapat outliers dalam variabel days_left.
+
+![image](https://user-images.githubusercontent.com/122204998/215275715-4455ce36-d97b-4919-b969-07ad60d44acc.png)
+
+Gambar 3: univariate analysis pada variabel airline
+
+Berdasarkan hasil visualisasi, maskapai penerbangan vistara memiliki jumlah data yang paling banyak dibandingkan dengan masakapai penerbangan lainnya, sedangkan maskapai penerbangan SpiceJet memiliki jumlah data yang paling sedikit dibandingkan dengan maskapai penerbangan lainnya.
+
+![image](https://user-images.githubusercontent.com/122204998/215275873-b6947df9-135d-405c-b645-7733db19a332.png)
+
+Gambar 4: univariate analysis pada variabel source_city
+
+Berdasarkan hasil visualisasi, Delhi memiliki jumlah data yang paling banyak dibandingkan dengan kota keberangkatan lainnya, sedangkan Chennai memiliki jumlah data yang paling sedikit dibandingkan dengan kota keberangkatan lainnya.
+
+![image](https://user-images.githubusercontent.com/122204998/215276030-75013578-016d-4d3b-94cf-da7fe78773d1.png)
+
+Gambar 5: univariate analysis pada variabel departure_time
+
+Berdasarkan hasil visualisasi, waktu keberangkatan pagi (morning) memiliki jumlah data yang paling banyak dibandingkan dengan kota keberangkatan lainnya, namun masih relatif seimbang, kecuali waktu keberangkatan tengah malam memiliki jumlah data yang sangat sedikit dibandingkan dengan waktu keberangkatan lainnya.
+
+![image](https://user-images.githubusercontent.com/122204998/215276157-c79c42f4-555d-45c8-ab5c-b8197aaaf718.png)
+
+Gambar 6: univariate analysis pada variabel destination_city
+
+Berdasarkan hasil visualisasi, waktu keberangkatan pagi (morning) memiliki jumlah data yang paling banyak dibandingkan dengan kota keberangkatan lainnya, namun masih relatif seimbang, kecuali waktu keberangkatan tengah malam memiliki jumlah data yang sangat sedikit dibandingkan dengan waktu keberangkatan lainnya.
+
+![image](https://user-images.githubusercontent.com/122204998/215276300-e37a7db7-8f6e-4e12-b292-c422cf019d08.png)
+
+Gambar 7: univariate analysis pada variabel class
+
+Berdasarkan hasil visualisasi, kelas ekonomi mendominasi jumlah data di dalam dataset, dibandingkan dengan kelas bisnis.
+
+![image](https://user-images.githubusercontent.com/122204998/215276447-0869bef6-e328-41f0-9258-47fbe7260974.png)
+
+Gambar 8: univariate analysis pada stops, duration, variabel days_left, price dengan menggunakan histogram
+
+Berdasarkan hasil visualisasi, maka dapat dibuat kesimpulan sebagai berikut:
+- kebanyakan pesawat melakukan transit sebanyak satu kali.
+- semakin cepat waktu penerbangan, maka harga tiket pesawat semakin mahal.
+- variabel days_left tidak begitu berpengaruh pada harga tiket pesawat.
+
+![image](https://user-images.githubusercontent.com/122204998/215325509-8f151876-8200-4db2-b8fc-77759423de7d.png)
+
+Gambar 9: multivariate analysis antara variabel airline dengan price
+
+Berdasarkan hasil visualisasi, variabel airline memiliki korelasi yang kuat terhadap price.
+
+![image](https://user-images.githubusercontent.com/122204998/215325764-55e8913b-14f3-49b2-8b07-6646cc08a379.png)
+
+Gambar 10: multivariate analysis antara variabel source_city dengan price
+
+Berdasarkan hasil visualisasi, variabel source city kurang memiliki korelasi terhadap price.
+
+![image](https://user-images.githubusercontent.com/122204998/215325834-fae3b485-55bf-4e11-b61a-60a3cdd993b0.png)
+
+Gambar 11: multivariate analysis antara variabel departure_time dengan price
+
+Berdasarkan hasil visualisasi, variabel departure_time cukup memiliki korelasi terhadap price.
+
+![image](https://user-images.githubusercontent.com/122204998/215325927-c2e1f93b-f6de-4eb4-adf4-ddf382d952cb.png)
+
+Gambar 12: multivariate analysis antara variabel arrival_time dengan price
+
+Berdasarkan hasil visualisasi, variabel arrival_time cukup memiliki korelasi terhadap price.
+
+![image](https://user-images.githubusercontent.com/122204998/215326002-60fecf19-efc5-4213-813b-ab022cff7bef.png)
+
+Gambar 13: multivariate analysis antara variabel destination_city dengan price
+
+Berdasarkan hasil visualisasi, variabel destination_city kurang memiliki korelasi terhadap price.
+
+![image](https://user-images.githubusercontent.com/122204998/215326095-7fde0672-65cd-4773-b75a-870225f74455.png)
+
+Berdasarkan hasil visualiasi, variabel class memiliki korelasi yang kuat terhadap price.
+
+
+Gambar 13: multivariate analysis variabel stops, duration, days_left terhadap price
+
+Berdasarkan hasil visualiasi, dapat dibuat kesimpulan bahwa variabel stops, duration dan days_left kurang memiliki korelasi dengan price.
+
+![Uploading correlation matrix.jpg…]()
+
+Berdasarkan hasil visualiasi, dapat dibuat kesimpulan bahwa variabel stops, duration dan days_left kurang memiliki korelasi dengan price.
+
+
+
+
+
+
+
+
 **Proses *Data Preparation***: 
-- Proses data preparation dilakukan melalui langkah-langkah, yaitu sebagai berikut: Melakukan *load* data pada *google colaboratory*, kemudian melakukan analisis awal terkait variabel yang sangat tidak relevan untuk diproses lebih lanjut. Selanjutnya, memahami makna-makna variabel dengan menerapkan *Exploratory Data Analysis*, kemudian melakukan visualisasi data untuk mencari outlier dengan menggunakan *boxplot* dari *library seaborn*. Selanjutnya, menerapkan metode IQR untuk mengeliminasi outlier, kemudian menggunakan *univariative analysis* serta *multivariative analysis*. Selanjutnya membuat *correlation matrix*, kemudian membuang variabel numberik yang memiliki korelasi rendah terhadap variabel *price.*
+- Proses data preparation dilakukan melalui langkah-langkah, yaitu sebagai berikut: Melakukan *load* data pada *google colaboratory*, kemudian melakukan analisis awal terkait variabel yang sangat tidak relevan untuk diproses lebih lanjut. Selanjutnya, memahami makna-makna variabel dengan menerapkan *Exploratory Data Analysis*, kemudian melakukan visualisasi data untuk mencari outlier dengan menggunakan *boxplot* dari *library seaborn*. Selanjutnya, menerapkan metode IQR untuk mengeliminasi outlier, kemudian menggunakan *univariate analysis* serta *multivariative analysis*. Selanjutnya membuat *correlation matrix*, kemudian membuang variabel numberik yang memiliki korelasi rendah terhadap variabel *price.*
 - Data preparation diperlukan agar data yang akan diproses oleh algoritma *machine learning* bebas dari *outlier* dan variabel-variabel yang digunakan untuk algoritma adalah variabel yang memiliki korelasi tinggi terhadap penentuan prediksi harga tiket pesawat.
 - Pembuatan aplikasi ini menggunakan IQR *(Interquartile Range)* untuk mengeliminasi *outlier* yang terdapat dalam dataset *flight price prediction*.
 
