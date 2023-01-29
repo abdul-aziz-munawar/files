@@ -180,16 +180,11 @@ Gambar 13: multivariate analysis variabel stops, duration, days_left terhadap pr
 
 Berdasarkan hasil visualiasi, dapat dibuat kesimpulan bahwa variabel stops, duration dan days_left kurang memiliki korelasi dengan price.
 
-![Uploading correlation matrix.jpg…]()
+![correlation matrix](https://user-images.githubusercontent.com/122204998/215327123-a9d84239-f9c7-467a-b853-7eceb68719fe.jpg)
 
-Berdasarkan hasil visualiasi, dapat dibuat kesimpulan bahwa variabel stops, duration dan days_left kurang memiliki korelasi dengan price.
+Gambar 14: Correlation Matrix
 
-
-
-
-
-
-
+Bila kita lihat, bahwa korelasi variabel stops terhadap price = 0.12, korelasi variabel duration terhadap price = 0.22, sedangkan korelasi variabel days_left terhadap price sebesar 0.09.
 
 **Proses *Data Preparation***: 
 - Proses data preparation dilakukan melalui langkah-langkah, yaitu sebagai berikut: Melakukan *load* data pada *google colaboratory*, kemudian melakukan analisis awal terkait variabel yang sangat tidak relevan untuk diproses lebih lanjut. Selanjutnya, memahami makna-makna variabel dengan menerapkan *Exploratory Data Analysis*, kemudian melakukan visualisasi data untuk mencari outlier dengan menggunakan *boxplot* dari *library seaborn*. Selanjutnya, menerapkan metode IQR untuk mengeliminasi outlier, kemudian menggunakan *univariate analysis* serta *multivariative analysis*. Selanjutnya membuat *correlation matrix*, kemudian membuang variabel numberik yang memiliki korelasi rendah terhadap variabel *price.*
