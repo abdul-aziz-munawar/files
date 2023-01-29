@@ -47,12 +47,9 @@ Tujuan yang ingin dicapai dari pembuatan aplikasi prediksi harga tiket pesawat d
     - Solusi yang dapat dilakukan untuk menangani permasalahan sebagaimana terdapat dalam problem statements, yaitu dengan membuat aplikasi prediksi harga tiket pesawat. Adapun aplikasi tersebut dibuat dengan menerapkan teknologi machine learning serta bahasa pemrograman python.
     - Algoritma machine learning yang akan digunakan, yaitu Random Forest dan Boosting Algorithm.
     - Untuk mengukur keakuratan/keidealan prediksi harga tiket pesawat yang dilakukan oleh aplikasi yang dibuat, maka metrik yang digunakan adalah Mean Squared Error (MSE). 
-    - Mean Squared Error (MSE) adalah mengukur harga hasil akurasi prediksi terhadap hargaa ideal.
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
 
 ## Data Understanding
-Data yang digunakan adalah dataset yang bersumber dari situs Kaggle yang berisi dataset terkait tiket pesawat di maskapai penerbangan India. Dataset sebagaimana dimaksud dapat didownload pada link berikut ini: [Flight Price Prediction](https://www.kaggle.com/datasets/shubhambathwal/flight-price-prediction)
+Data yang digunakan adalah dataset yang bersumber dari situs Kaggle yang berisi dataset terkait tiket pesawat di maskapai penerbangan India. Dataset sebagaimana dimaksud dapat didownload pada link berikut ini: [Flight Price Prediction](https://www.kaggle.com/datasets/shubhambathwal/flight-price-prediction). Jumlah data yang terdapat didalam Flight Price Prediction sebanyak 300153 data.
 
 ### Variabel-variabel yang terdapat dalam dataset Flight Price Prediction:
 - airline = Nama maskapai penerbangan.
@@ -175,6 +172,7 @@ Berdasarkan hasil visualisasi, variabel destination_city kurang memiliki korelas
 
 Berdasarkan hasil visualiasi, variabel class memiliki korelasi yang kuat terhadap price.
 
+![multivariate numerical variable](https://user-images.githubusercontent.com/122204998/215327836-cbe9e62d-b87d-499c-a7df-052ae29507f1.gif)
 
 Gambar 13: multivariate analysis variabel stops, duration, days_left terhadap price
 
@@ -226,8 +224,22 @@ Bila kita lihat, bahwa korelasi variabel stops terhadap price = 0.12, korelasi v
 - Alasannya, karena nilai *Mean Absolute Error (MAE)* yang dihasilkan *Random Forest* lebih baik dari *Boosting Algorithm*.
 
 ## *Evaluation*
-Metrik yang digunakan untuk mengukur hasil *training* adalah *mean absolute error (MAE)*. Berdasarkan hasil training, bahwa model *Random Forest* menghasilan nilai MAE pada saat *training* = 2009.8582782434323 dan pada saat tes = 2218.153604433864. Ketika dianalisis, nilai MAE tersebut kurang dari 10%, sehingga model sudah dapat dikatakan menghasilkan nilai yang baik *(good fit)*.
+Tabel 1: Hasil Evaluasi Model dengan Menggunakan Mean Absolute Error
+Model                        | train       | test	  |
+---------------------------- | ----------- | ------------ |
+Random Forest (RF)           | 2009.858278 | 2218.153604  |
+Boosting Algorithm (Boosting)| 4818.380262 | 4790.128881  |
+- Metrik yang digunakan untuk mengukur hasil *training* adalah *mean absolute error (MAE)*. 
+- Berdasarkan hasil training, bahwa model *Random Forest* menghasilan nilai MAE pada saat *training* = 2009.8582782434323 dan pada saat tes = 2218.153604433864. 
+- Ketika dianalisis, nilai MAE tersebut kurang dari 10%, sehingga model sudah dapat dikatakan menghasilkan nilai yang baik *(good fit)*.
+- Berdasarkan hasil training model, maka ditetapkan bahwa algoritma yang terbaik diantara *Random Forest* dan *Boosting Algorithm* dalam memprediksi harga tiket, yaitu algoritma *Random Forest*.\
+- Alasannya, karena nilai *Mean Absolute Error (MAE)* yang dihasilkan *Random Forest* lebih baik dari *Boosting Algorithm*.
 
 **Cara Kerja Metrik Mean Absolute Error**: 
 - *Mean Absolute Error* adalah metrik statistik yang digunakan untuk mengukur keakuratan dari prediksi nilai yang bersifat kontinyu.
 - Semakin kecil nilai MAE, maka akan semakin baik pula model tersebut dalam melakukan prediksi nilai.
+
+**Kesimpulan**
+- Berdasarkan hasil training dan test, maka algoritma yang terbaik adalah *Random Forest*, alasannya karena nilai *Mean Absolute Error (MAE)* yang dihasilkan *Random Forest* lebih baik dari *Boosting Algorithm*.
+- Model telah good fit dalam melakukan akurasi, alasannya karena nilai MAE yang dihasilkan kurang dari 10% 2009.858278 sedangkan 10% nilai MAE, yaitu 9786.7
+- 10 % nilai MAE dihitung dengan rumus: mae_target = (flight['price'].max() - flight['price'].min()) * 10/100 
